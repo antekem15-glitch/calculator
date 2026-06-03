@@ -1,10 +1,14 @@
 
-const display = document.getElementById("display")
+const display = document.getElementById("display");
+const show = document.getElementById("show");
+
 
 let firstValue = null;
 let secondValue = null;
 let aktuellerOperator = null;
 let ergebnis=null;
+
+/* Buttons with numbers */
 
 const zero=document.getElementById('zero').addEventListener("click", function() { 
      if (ergebnis !== null) {
@@ -97,22 +101,27 @@ const nine=document.getElementById('nine').addEventListener("click", function() 
             display.value += 9
         }
 });
+
+/* functional Buttons*/
+
 const clear = document.getElementById('clear').addEventListener("click", function() { 
     display.value = ""; 
     firstValue = null;
     secondValue = null;
     aktuellerOperator = null;
+    ergebnis=null;
+    show.value = ""
     
 });
 const del = document.getElementById('delete').addEventListener("click", function() {
 display.value = display.value.slice(0, -1);
 
-if (firstValue !== null) {
+
+if (ergebnis !== null) {
+    ergebnis = display.value;
     firstValue = display.value;
-    ergebnis = firstValue;
 }
 });
-
 const dot=document.getElementById('dot').addEventListener("click", function() {
     if (display.value.includes(".")) {
     } else {
@@ -125,17 +134,22 @@ const plus=document.getElementById('plus').addEventListener("click", function() 
         firstValue=display.value;
         display.value="";
         aktuellerOperator = "+";
+        show.value = firstValue + aktuellerOperator;
     }else if (ergebnis === null) { 
         const first= Number(firstValue);
         secondValue=display.value;
         const second = Number(secondValue);
         ergebnis= first+second
-        display.value = Math.round(ergebnis*1000000)/1000000;
-        firstValue = display.value 
+        firstValue = Math.round(ergebnis*1000000)/1000000;
         aktuellerOperator = "+";
+        display.value=""
+        show.value = ergebnis + aktuellerOperator;
         
-} else{
-aktuellerOperator = "+";
+        
+    } else{
+        aktuellerOperator = "+";
+        show.value = ergebnis + aktuellerOperator;
+        
 
 }});
 const minus=document.getElementById('minus').addEventListener("click", function() {
@@ -143,17 +157,20 @@ const minus=document.getElementById('minus').addEventListener("click", function(
         firstValue=display.value;
         display.value="";
         aktuellerOperator = "-";
+        show.value = firstValue + aktuellerOperator;
     }else if (ergebnis === null) { 
         const first= Number(firstValue);
         secondValue=display.value;
         const second = Number(secondValue);
         ergebnis= first-second
-        display.value = Math.round(ergebnis*1000000)/1000000;
-        firstValue = display.value 
+        firstValue = Math.round(ergebnis*1000000)/1000000; 
         aktuellerOperator = "-";
+        display.value=""
+        show.value = ergebnis + aktuellerOperator;
         
-} else{
-aktuellerOperator = "-";
+    } else{
+        aktuellerOperator = "-";
+        show.value = ergebnis + aktuellerOperator;
 
 }});
 const multi=document.getElementById('multi').addEventListener("click", function() {  
@@ -161,17 +178,20 @@ const multi=document.getElementById('multi').addEventListener("click", function(
         firstValue=display.value;
         display.value="";
         aktuellerOperator = "x";
+        show.value = firstValue + aktuellerOperator;
     }else if (ergebnis === null) { 
         const first= Number(firstValue);
         secondValue=display.value;
         const second = Number(secondValue);
         ergebnis= first*second
-        display.value = Math.round(ergebnis*1000000)/1000000;
-        firstValue = display.value 
+        firstValue = Math.round(ergebnis*1000000)/1000000;
         aktuellerOperator = "x";
+        display.value=""
+        show.value = ergebnis + aktuellerOperator;
         
     } else{
-aktuellerOperator = "x";
+        aktuellerOperator = "x";
+        show.value = ergebnis + aktuellerOperator;
 
 }});
 const divide=document.getElementById('divide').addEventListener("click", function() {  
@@ -179,58 +199,66 @@ const divide=document.getElementById('divide').addEventListener("click", functio
         firstValue=display.value;
         display.value="";
         aktuellerOperator = "/";
+        show.value = firstValue + aktuellerOperator;
     }else if (ergebnis === null) { 
         const first= Number(firstValue);
         secondValue=display.value;
         const second = Number(secondValue);
         ergebnis= first/second
-        display.value = Math.round(ergebnis*1000000)/1000000;
-        firstValue = display.value 
+        firstValue = Math.round(ergebnis*1000000)/1000000;
         aktuellerOperator = "/";
+        display.value=""
+        show.value = ergebnis + aktuellerOperator;
         
-} else{
-aktuellerOperator = "/";
+    } else{
+        aktuellerOperator = "/";
+        show.value = ergebnis + aktuellerOperator;
 
 }});
-
 const sum = document.getElementById('sum').addEventListener("click", function() {secondValue=display.value; 
     const first= Number(firstValue);
     const second = Number(secondValue);
     
  if (aktuellerOperator === "+") {
-     
+    show.value = `${first} ${aktuellerOperator} ${second} =`; 
      const total = first+second
      display.value = Math.round(total*10000)/10000;
-     firstValue=display.value
-     ergebnis = firstValue
+     firstValue = display.value;
+    ergebnis = firstValue;
     aktuellerOperator ="+";
+    
  }  
  if (aktuellerOperator === "-") {
+     show.value = `${first} ${aktuellerOperator} ${second} =`;
      
      const total = first-second
      display.value = Math.round(total*10000)/10000;
-     firstValue=display.value
-     ergebnis = firstValue
+     firstValue = display.value;
+ergebnis = firstValue;
      aktuellerOperator ="-";
+        
  }  
  if (aktuellerOperator === "x") {
-     
+     show.value = `${first} ${aktuellerOperator} ${second} =`;
      const total = first*second
      display.value = Math.round(total*10000)/10000;
-     firstValue=display.value
-     ergebnis = firstValue
+     firstValue = display.value;
+ergebnis = firstValue;
      aktuellerOperator ="x";
+     
+        
  }  
  if (aktuellerOperator === "/") {
-     
+     show.value = `${first} ${aktuellerOperator} ${second} =`;
      const total = first/second
      display.value = Math.round(total*10000)/10000;
-     firstValue=display.value
-     ergebnis = firstValue
+     firstValue = display.value;
+        ergebnis = firstValue;
      aktuellerOperator ="/";
- }  
- 
-});
+     
+        
+ }});
+
 
 
 
