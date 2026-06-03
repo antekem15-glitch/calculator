@@ -102,7 +102,7 @@ const nine=document.getElementById('nine').addEventListener("click", function() 
         }
 });
 
-/* functional Buttons*/
+/* functional buttons*/
 
 const clear = document.getElementById('clear').addEventListener("click", function() { 
     display.value = ""; 
@@ -215,13 +215,24 @@ const divide=document.getElementById('divide').addEventListener("click", functio
         show.value = ergebnis + aktuellerOperator;
 
 }});
-const sum = document.getElementById('sum').addEventListener("click", function() {secondValue=display.value; 
+const sum = document.getElementById('sum').addEventListener("click", function() { 
+    
+ console.log("firstValue:", firstValue);
+    console.log("display.value:", display.value);
+    console.log("aktuellerOperator:", aktuellerOperator);
+ 
+ 
+
+if( ergebnis === null) {
+    secondValue = display.value;
+}
+    
     const first= Number(firstValue);
     const second = Number(secondValue);
     
  if (aktuellerOperator === "+") {
-    show.value = `${first} ${aktuellerOperator} ${second} =`; 
-     const total = first+second
+    show.value = `${first} ${aktuellerOperator} ${second} =`;  
+    const total = first+second
      display.value = Math.round(total*10000)/10000;
      firstValue = display.value;
     ergebnis = firstValue;
