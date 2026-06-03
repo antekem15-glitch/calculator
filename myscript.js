@@ -25,18 +25,64 @@ const eight=document.getElementById('eight').addEventListener("click", function(
 });
 const nine=document.getElementById('nine').addEventListener("click", function() { display.value += 9;
 });
-const plus=document.getElementById('plus').addEventListener("click", function() { display.value = "+";
+const plus=document.getElementById('plus').addEventListener("click", function() { firstValue=display.value;
+display.value=""
+aktuellerOperator = "+"
+
 });
-const minus=document.getElementById('minus').addEventListener("click", function() { display.value = "-";
+const minus=document.getElementById('minus').addEventListener("click", function() { firstValue=display.value;
+    display.value=""
+aktuellerOperator = "-"
 });
 const del =document.getElementById('delete').addEventListener("click", function() { display.value = " "; 
 });
-const dot=document.getElementById('dot').addEventListener("click", function() {display.value += ".";
+const dot=document.getElementById('dot').addEventListener("click", function() {
+if (display.value.includes(".")) {
+
+} else {
+    display.value +=".";
+}
+
+});
+const multi=document.getElementById('multi').addEventListener("click", function() { firstValue=display.value;
+    display.value=""
+aktuellerOperator = "x"
+});
+const divide=document.getElementById('divide').addEventListener("click", function() { firstValue=display.value;
+    display.value=""
+aktuellerOperator = "/"
 });
 
-const clear = document.getElementById('delete').addEventListener("click", function() { 
+const sum = document.getElementById('sum').addEventListener("click", function() {secondValue=display.value; 
+    const first= Number(firstValue);
+    const second = Number(secondValue);
+    
+ if (aktuellerOperator === "+") {
+     
+     const total = first+second
+     display.value = total
+ }  
+ if (aktuellerOperator === "-") {
+     
+     const total = first-second
+     display.value = total
+ }  
+ if (aktuellerOperator === "x") {
+     
+     const total = first*second
+     display.value = total
+ }  
+ if (aktuellerOperator === "/") {
+     
+     const total = first/second
+     display.value = total
+ }  
 
+
+
+    
 });
+
 
 
 
