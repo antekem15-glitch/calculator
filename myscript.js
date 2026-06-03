@@ -97,12 +97,22 @@ const nine=document.getElementById('nine').addEventListener("click", function() 
             display.value += 9
         }
 });
-const clear =document.getElementById('clear').addEventListener("click", function() { display.value = " "; 
+const clear = document.getElementById('clear').addEventListener("click", function() { 
+    display.value = ""; 
     firstValue = null;
     secondValue = null;
     aktuellerOperator = null;
     
 });
+const del = document.getElementById('delete').addEventListener("click", function() {
+display.value = display.value.slice(0, -1);
+
+if (firstValue !== null) {
+    firstValue = display.value;
+    ergebnis = firstValue;
+}
+});
+
 const dot=document.getElementById('dot').addEventListener("click", function() {
     if (display.value.includes(".")) {
     } else {
@@ -192,24 +202,32 @@ const sum = document.getElementById('sum').addEventListener("click", function() 
      const total = first+second
      display.value = Math.round(total*10000)/10000;
      firstValue=display.value
+     ergebnis = firstValue
+    aktuellerOperator ="+";
  }  
  if (aktuellerOperator === "-") {
      
      const total = first-second
      display.value = Math.round(total*10000)/10000;
      firstValue=display.value
+     ergebnis = firstValue
+     aktuellerOperator ="-";
  }  
  if (aktuellerOperator === "x") {
      
      const total = first*second
      display.value = Math.round(total*10000)/10000;
      firstValue=display.value
+     ergebnis = firstValue
+     aktuellerOperator ="x";
  }  
  if (aktuellerOperator === "/") {
      
      const total = first/second
      display.value = Math.round(total*10000)/10000;
      firstValue=display.value
+     ergebnis = firstValue
+     aktuellerOperator ="/";
  }  
  
 });
