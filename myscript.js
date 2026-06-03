@@ -10,98 +10,23 @@ let ergebnis=null;
 
 /* Buttons with numbers */
 
-const zero=document.getElementById('zero').addEventListener("click", function() { 
-     if (ergebnis !== null) {
-        display.value = "";
-        display.value += 0;
-        ergebnis = null;
-        }else {
-            display.value += 0;
-        }
-});
-const one=document.getElementById('one').addEventListener("click", function() {
-     if (ergebnis !== null) {
-        display.value = "";
-        display.value += 1;
-        ergebnis = null;
-        }else {
-            display.value += 1;
-        }
-});
-const two=document.getElementById('two').addEventListener("click", function() {
-     if (ergebnis !== null) {
-        display.value = "";
-        display.value += 2;
-        ergebnis = null;
-        }else {
-            display.value += 2;
-        }
-});
-const three=document.getElementById('three').addEventListener("click", function() {
-     if (ergebnis !== null) {
-        display.value = "";
-        display.value += 3;
-        ergebnis = null;
-        }else {
-            display.value += 3;
-        }
-});
-const four=document.getElementById('four').addEventListener("click", function() { 
-     if (ergebnis !== null) {
-        display.value = "";
-        display.value += 4;
-        ergebnis = null;
-        }else {
-            display.value += 4;
-        }
-});
-const five=document.getElementById('five').addEventListener("click", function() { 
-     if (ergebnis !== null) {
-        display.value = "";
-        display.value += 5;
-        ergebnis = null;
-        }else {
-            display.value += 5;
-        }
-});
-const six=document.getElementById('six').addEventListener("click", function() { 
-     if (ergebnis !== null) {
-        display.value = "";
-        display.value += 6;
-        ergebnis = null;
-        }else {
-            display.value += 6;
-        }
-});
-const seven=document.getElementById('seven').addEventListener("click", function() { 
-     if (ergebnis !== null) {
-        display.value = "";
-        display.value += 7;
-        ergebnis = null;
-        }else {
-            display.value += 7;
-        }
-});
-const eight=document.getElementById('eight').addEventListener("click", function() { 
-    if (ergebnis !== null) {
-        display.value = "";
-        display.value += 8;
-        ergebnis = null;
-        }else {
-            display.value += 8;
-        }
-});
-const nine=document.getElementById('nine').addEventListener("click", function() { 
-    
-    if (ergebnis !== null) {
-        display.value = "";
-        display.value += 9;
-        ergebnis = null;
-        }else {
-            display.value += 9
-        }
-});
-
+ function numButton(id , zahl) {
+                    document.getElementById(id).addEventListener("click", function() { 
+             if (ergebnis !== null) {
+                display.value = "";
+                ergebnis = null;
+                }display.value += zahl;
+            });}
+ numButton("zero",0);           
+ numButton("one",1);           
+ numButton("two",2);           
+ numButton("three",3);           
+ numButton("four",4);           
+ numButton("five",5);           
+ numButton("six",6);           
+ numButton("seven",7);           
+ numButton("eight",8);           
+ numButton("nine",9);                   
 /* functional buttons*/
 
 const clear = document.getElementById('clear').addEventListener("click", function() { 
@@ -221,8 +146,6 @@ const sum = document.getElementById('sum').addEventListener("click", function() 
     console.log("display.value:", display.value);
     console.log("aktuellerOperator:", aktuellerOperator);
  
- 
-
 if( ergebnis === null) {
     secondValue = display.value;
 }
@@ -275,6 +198,11 @@ ergebnis = firstValue;
 
 
 
+
+               
+        
+                
+  
 
 
 
